@@ -1,0 +1,22 @@
+{
+    "name": "sempico/sempico-php",
+    "description": "Api library to interact with Sempico Solutions REST Api",
+    "type": "library",
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "require": {
+        "curl/curl": "^2.3"
+    },
+    "authors": [
+        {
+            "name": "Taras",
+            "email": "winclain91@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "YourVendor\\YourLibrary\\": "src/"
+        }
+    }
+}
