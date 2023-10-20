@@ -2,41 +2,18 @@
 
 namespace Sempico\Api;
 
-class ApiClient 
+class Auth 
 {
     /**
-	 * api token
-	 * @var string
-	 */
-    private string $token;
-
-    /**
-	 * domain
-	 * @var string
-	 */
-    private string $domain = 'https://restapi.sempico.solutions/';
-
-    public function __construct(string $token)
+     * Register new customer
+     * @param array $config
+     * @return array
+     */
+    public function register(array $config)
     {
-        $this->token = $token;
-    } 
+        $route = 'v1/register';
 
-    /**
-	 * Get api token
-	 * @return string
-	 */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-	 * Get api domain
-	 * @return string
-	 */
-    public function getDomain(): string
-    {
-        return $this->domain;
+        return $this->curlRequest($route, 'POST', $config);
     }
 
     /**
@@ -53,12 +30,11 @@ class ApiClient
 
         // Header
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'x-access-token: '. $this->token
+            'Content-Type: application/json'
         ]);
 
         // Url
-        curl_setopt($ch, CURLOPT_URL, $this->domain . $url);
+        curl_setopt($ch, CURLOPT_URL, 'https://restapi.sempico.solutions/' . $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -92,17 +68,5 @@ class ApiClient
         }
 
         return json_encode($data);
-    }
-
-    /**
-     * Get info about account
-     * @param array $config
-     * @return array
-     */
-    public function getInfoAboutMe()
-    {
-        $route = 'v1/me';
-
-        return $this->curlRequest($route, false, []);
     }
 }

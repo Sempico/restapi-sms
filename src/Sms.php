@@ -2,7 +2,7 @@
 
 namespace Sempico\Api;
 
-class Statistic 
+class Sms 
 {
     /**
 	 * Api client
@@ -16,37 +16,37 @@ class Statistic
     } 
 
     /**
-     * Quick search
+     * Send sms
      * @param array $config
      * @return array
      */
-    public function quickSearch(array $config)
+    public function send(array $config)
     {
-        $route = 'v1/statistic/quick';
+        $route = 'v1/send';
 
         return $this->client->curlRequest($route, 'POST', $config);
     }
 
     /**
-     * Sms full data
+     * Get info about sms
      * @param array $config
      * @return array
      */
-    public function smsFullData(array $config)
+    public function getInfo(array $config)
     {
-        $route = 'v1/statistic/sms-full-data';
+        $route = 'v1/sms-full-data';
 
         return $this->client->curlRequest($route, 'POST', $config);
     }
 
     /**
-     * General search
+     * Make refactoring of sms
      * @param array $config
      * @return array
      */
-    public function general(array $config)
+    public function refactoring(array $config)
     {
-        $route = 'v1/statistic/general';
+        $route = 'v1/replacement';
 
         return $this->client->curlRequest($route, 'POST', $config);
     }
