@@ -2,7 +2,7 @@
     "name": "sempico/restapi-sms-php",
     "description": "Api library to interact with Sempico Solutions REST Api",
     "type": "library",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "license": "MIT",
