@@ -7,7 +7,8 @@
     "prefer-stable": true,
     "license": "MIT",
     "require": {
-        "curl/curl": "^2.3"
+        "curl/curl": "^2.3",
+        "sempico/restapi-sms-php": "1.0.0"
     },
     "authors": [
         {
