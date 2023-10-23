@@ -23,7 +23,7 @@ class Auth
      * @param string|bool $customMethod
      * @return array
      */
-    public function curlRequest(string $url, string|bool $customMethod, array $data): array
+    public function curlRequest(string $url, string|bool $customMethod, array $data): mixed
     {
         $output = [];
         $ch = curl_init();
