@@ -86,8 +86,8 @@ class ApiClient
     {
         if (!strlen($data['error'])) {
             $data['result'] = json_decode($data['result']);
-            if (isset($data['result']['error_code']) && strlen($data['result']['error_code'])) {
-                $data['error'] = $data['result']['error'];
+            if (isset($data['result']->error_code) && strlen($data['result']->error_code)) {
+                $data['error'] = $data['result']->error;
             }
         }
 
