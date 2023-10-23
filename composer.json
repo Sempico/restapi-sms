@@ -4,6 +4,7 @@
     "type": "library",
     "version": "1.0.0",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "license": "MIT",
     "require": {
         "curl/curl": "^2.3"
