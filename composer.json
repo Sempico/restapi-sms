@@ -3,12 +3,11 @@
     "description": "Api library to interact with Sempico Solutions REST Api",
     "type": "library",
     "version": "1.0.0",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "license": "MIT",
     "require": {
-        "curl/curl": "^2.3",
-        "sempico/restapi-sms-php": "1.0.0"
+        "curl/curl": "^2.3"
     },
     "authors": [
         {

@@ -16,7 +16,7 @@ composer require sempico/sempico-php
 
 #### Simple usage
 ```php
-use Sempico\Api\ApiClient;
+use Sempico\RestApi\ApiClient;
 
 // create api cient for usage
 $client = new ApiClient('Dfdda23vwWv2khHs'); //parametr is your restapi token
@@ -24,7 +24,7 @@ $client = new ApiClient('Dfdda23vwWv2khHs'); //parametr is your restapi token
 
 #### Source price
 ```php
-use Sempico\Api\SourcePrice;
+use Sempico\RestApi\SourcePrice;
 
 $sourcePrice = new SourcePrice($client); //parametr $client is ApiCLient object
 

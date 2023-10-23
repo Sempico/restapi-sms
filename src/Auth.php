@@ -1,6 +1,6 @@
 <?php 
 
-namespace Sempico\Api;
+namespace Sempico\RestApi;
 
 class Auth 
 {
