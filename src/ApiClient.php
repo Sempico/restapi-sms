@@ -71,27 +71,10 @@ class ApiClient
 
         $output['result'] = curl_exec($ch);
         $output['http_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $output['error'] = curl_error($ch);
+        $output['request_error'] = curl_error($ch);
         curl_close($ch);
         
-        return $this->handleError($output);
-    }
-
-    /**
-     * Handle result for errors
-     * @param array $data
-     * @return mixed
-     */
-    protected function handleError(array $data): mixed
-    {
-        if (!strlen($data['error'])) {
-            $data['result'] = json_decode($data['result']);
-            if (isset($data['result']->error_code) && strlen($data['result']->error_code)) {
-                $data['error'] = $data['result']->error;
-            }
-        }
-
-        return json_encode($data);
+        return $output;
     }
 
     /**
