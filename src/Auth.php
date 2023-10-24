@@ -7,7 +7,7 @@ class Auth
     /**
      * Register new customer
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function register(array $config)
     {
@@ -21,7 +21,7 @@ class Auth
      * @param string $url
      * @param array $data
      * @param string|bool $customMethod
-     * @return array
+     * @return mixed
      */
     public function curlRequest(string $url, string|bool $customMethod, array $data): mixed
     {

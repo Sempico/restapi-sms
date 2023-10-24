@@ -18,7 +18,7 @@ class Sms
     /**
      * Send sms
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function send(array $config)
     {
@@ -30,7 +30,7 @@ class Sms
     /**
      * Get info about sms
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function getInfo(array $config)
     {
@@ -42,7 +42,7 @@ class Sms
     /**
      * Make refactoring of sms
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function refactoring(array $config)
     {

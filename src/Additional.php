@@ -18,7 +18,7 @@ class Additional
     /**
      * Get all product prices
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function productPrice(array $config)
     {
@@ -30,7 +30,7 @@ class Additional
     /**
      * Get all client prices
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function accountPrice(array $config)
     {
@@ -42,7 +42,7 @@ class Additional
     /**
      * Get all prices for country
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function countryPrice(array $config)
     {
@@ -53,13 +53,12 @@ class Additional
 
     /**
      * Get all countries by continent
-     * @param array $config
-     * @return array
+     * @return mixed
      */
-    public function countryByContinent(array $config)
+    public function countryByContinent()
     {
         $route = 'v1/country-by-continent';
 
-        return $this->client->curlRequest($route, 'POST', $config);
+        return $this->client->curlRequest($route, 'POST', []);
     }
 }

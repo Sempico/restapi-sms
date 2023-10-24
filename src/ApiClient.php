@@ -44,7 +44,7 @@ class ApiClient
      * @param string $url
      * @param array $data
      * @param string|bool $customMethod
-     * @return array
+     * @return mixed
      */
     public function curlRequest(string $url, string|bool $customMethod, array $data): mixed
     {
@@ -97,7 +97,7 @@ class ApiClient
     /**
      * Get info about account
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function getInfoAboutMe()
     {

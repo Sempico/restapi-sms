@@ -18,7 +18,7 @@ class BlackList
     /**
      * Add numbers in black list
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function add(array $config)
     {
@@ -30,7 +30,7 @@ class BlackList
     /**
      * Search numbers in black list
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function search(array $config)
     {
@@ -42,7 +42,7 @@ class BlackList
     /**
      * Delete numbers from black list
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function delete(array $config)
     {

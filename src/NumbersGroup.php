@@ -18,7 +18,7 @@ class NumbersGroup
     /**
      * Get all groups
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function getAll(array $config)
     {
@@ -30,7 +30,7 @@ class NumbersGroup
     /**
      * Create group
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function create(array $config)
     {
@@ -42,7 +42,7 @@ class NumbersGroup
     /**
      * Delete groups
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function delete(array $config)
     {
@@ -54,7 +54,7 @@ class NumbersGroup
     /**
      * Add number in group
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function addNumber(array $config)
     {
@@ -66,7 +66,7 @@ class NumbersGroup
     /**
      * Search number in groups
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function searchNumber(array $config)
     {
@@ -78,7 +78,7 @@ class NumbersGroup
     /**
      * Delete number from group
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function deleteNumber(array $config)
     {
@@ -90,7 +90,7 @@ class NumbersGroup
     /**
      * Send bulk
      * @param array $config
-     * @return array
+     * @return mixed
      */
     public function sendBulk(array $config)
     {
