@@ -29,7 +29,7 @@ use Sempico\RestApi\Auth;
 
 $auth = new Auth(); 
 
-//Get all source prices
+//Regster new customer
 $result = $auth->register([
   'login'        => 'restap141i', // login pf a new account (required)
   'password'     => 'restapirestapi', // password a new account (required)
