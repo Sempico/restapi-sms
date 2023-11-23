@@ -1,5 +1,5 @@
 # SAAS Sempico SMS Library
-Zenziva SMS Online Gateway Library based on Zenziva [Documentation](https://www.zenziva.id/dokumentasi/)
+Sempico solutions sms api library for admins
 
 
 ## Requirements
@@ -18,15 +18,18 @@ composer require sempico/sempico-php
 ```php
 use Sempico\Api\ApiClient;
 
+$accessToken = 'Dfdda23vwWv2khHs'; // It's your access token
+$domain = 'https://app.sempico.solutions/'; // It's your domain
+
 // create api cient for usage
-$client = new ApiClient('Dfdda23vwWv2khHs'); //parametr is your restapi token
+$client = new ApiClient($accessToken, $domain); 
 ```
 
 #### Source price
 ```php
 use Sempico\Api\SourcePrice;
 
-$sourcePrice = new SourcePrice($client); //parametr $client is ApiCLient object
+$sourcePrice = new SourcePrice($client); //parameter $client is ApiClient object
 
 //Get all source prices
 $all = $sourcePrice->getAll([
@@ -62,113 +65,68 @@ $createResult = $sourcePrice->create([
   "price" => "0.04"
 ]);
 
-//Delete
+// Delete
 $sourcePriceId = 33;
-$createResult = $sourcePrice->create($sourcePriceId);
-```
-Default type is `reguler` if 3rd parameter not set.
-
-#### SMS Center
-```php
-$sms = new Sms('faytranevozter', '123456', 'sms_center');
-$sms->subdomain('mysubdomain'); // chainable, [required for sms_center]
-$sms->send('089765432123', 'Helaw! this is from sms_center');
-// or
-$sms = new Sms('faytranevozter', '123456');
-$sms->type('sms_center'); // chainable
-$sms->subdomain('mysubdomain'); // chainable, [required for sms_center]
-// send sms
-$sms->send('089765432123', 'Helaw! this is from sms_center'); // send(number, text, otp)
-```
-Default type is `reguler` if 3rd parameter not set.
-
-#### OTP SMS
-Zenziva now apply special treatment for SMS OTP. See [#Zenziva Docs](https://www.zenziva.id/dokumentasi/#1487744370576-71f03366-9c88)
-> Untuk mengirim SMS OTP, wajib menambahkan parameter type=otp
-```php
-$sms = new Sms('faytranevozter', '123456', 'masking');
-$sms->send('089765432123', 'Helaw! this is masking sms', TRUE);
-// or
-$sms = new Sms('faytranevozter', '123456');
-$sms->otp(TRUE); // chainable
-// send sms
-$sms->send('089765432123', 'Helaw! this is masking sms'); // send(number, text, otp)
-```
-
-#### Chaining
-```php
-$sms = new Sms();
-$sms->username('faytranevozter')
-    ->password('123456')
-    ->type('masking')
-    ->to('089765432123')
-    ->message('Helaw!')
-    ->send();
-```
-
-#### Handling Response
-##### Checking SMS Status
-```php
-$sms = new Sms('faytranevozter', '123456');
-$is_send = $sms->send('089765432123', 'Helaw! this is my sms');
-if ($is_send) {
-    echo "Sms sent!";
-} else {
-    echo "Uh-oh! Failed to send sms";
-}
-```
-##### Get Response
-```php
-$sms = new Sms('faytranevozter', '123456');
-$sms->send('089765432123', 'Helaw! this is my sms');
-$sms->send('082341561273', 'Helaw! this is my second sms');
-
-// get all response
-print_r($sms->responses()); // return array of response
-
-// get last response
-print_r($sms->last_response()); // return last response
-
-```
-##### Get Error
-```php
-$sms = new Sms('faytranevozter', '123456');
-$sms->send('089765432123', 'Helaw! this is my sms');
-$sms->send('082341561273', 'Helaw! this is my second sms');
-
-// get all error
-print_r($sms->errors()); // return array of error
-
-// get last error
-print_r($sms->last_error()); // return last error
-
-```
-
-#### Using Codeigniter Framework
-Creating library `Zenziva.php`
-```php
-use Faytranevozter\Zenziva\Sms;
-
-class Zenziva extends Sms {
-    function __construct($params=array()) {
-        parent::__construct(...$params);
-    }
-}
-```
-Load Zenziva library from controller
-```php
-...
-
-$this->load->library('Zenziva', ['faytranevozter', '123456', 'reguler']);
-$this->zenziva->send('089765432123', 'Helaw! this is my sms');
+$deleteResult = $sourcePrice->delete($sourcePriceId);
 
 ...
+```
+
+#### Statistic
+```php
+use Sempico\Api\Statistic;
+
+$statistic = new Statistic($client); //parameter $client is ApiClient object
+
+//Get all quick statistic
+$quickResult = $statistic->quickSearch([
+  "MCC" => 255,
+  "users_ids" => [1],
+  "id_aggregating" => 1,
+  "limit" => 1000,
+  "page" => 1
+]);
+
+//Get sms full data statistic
+$smsFullData = $statistic->smsFullData(53, [
+  "MCC" => 25500,
+  "id_user" => [1],
+  "id_aggregating" => 1,
+  "limit" => 1000,
+  "page" => 1
+]);
+
+//Get general statistic
+$generalResult = $statistic->general([
+  "MCC_choose" => [2551],
+  "id_user_choose" => [1],
+  "id_aggregating_choose" => [1],
+  "type_sms" => ['sms'],
+  "date_range_choose" => "2023-07-20 - 2023-07-22"
+]);
+```
+
+#### Aggregator
+```php
+use Sempico\Api\Aggregator;
+
+$aggregator = new Statistic($client); //parameter $client is ApiClient object
+
+//Get data about aggregators
+$aggregatorsResult = $aggregator->getAll([
+  "name": "Main",
+  "login": "Diar",
+  "manager_ids": [34, 3],
+  "onlyWorks": 1,
+  "socket_type": ['tcp'],
+  "connection": 2,
+  "ip": "234.00.54.033"
+]);
 ```
 
 ## Credits and License
 ### Author
-Fahrur Rifai [fahrur.dev](https://www.fahrur.dev)  
-Twitter [@faytranevozter](https://twitter.com/faytranevozter)
+Taras [winclain91@gmail.com]
 
 ### License
 MIT License
