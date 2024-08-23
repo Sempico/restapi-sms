@@ -71,6 +71,25 @@ $result = $sms->send([
   ]
 ]); 
 
+// Make SMS sending by Group's numbers via RESTAPI
+$result = $sms->sendBulk([
+  'senderID'  => 'SMS', // sender ID from which your sms will be send (required)
+  'text'      => 'Hello #first_name#, We send sms to #number#', // content of the message (required)
+  'dateStart' => '2022-09-01', // plan date where message will go
+  'timeStart' => '11:00', // plan time where message will go
+  'timeStop'  => '11:00', // plan time of sending stop
+  'phone'     => [
+    '12345678822'
+  ], // the number
+  'id_group'  => [
+    13
+  ], // array of groups for sending
+  'id_group_excluded' => [
+    24,
+    26
+  ] // array of groups for blocking sending
+]); 
+
 // Get info about sms
 $result = $sms->getInfo([
   'MCC'    => 224, // MCC for search
